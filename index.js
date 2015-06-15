@@ -1,4 +1,10 @@
 'use strict';
 module.exports = function (str, pad) {
-	return pad ? pad + String(str).split(/\r?\n/).join('\n' + pad) : str;
+	return pad ? String(str).split(/\r?\n/).map(function (line) {
+		if (line) {
+			line = pad + line;
+		}
+
+		return line;
+	}).join('\n'): str;
 };
